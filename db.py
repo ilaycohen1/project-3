@@ -23,6 +23,22 @@ def query(sql):
         cur = conn.cursor()
         return cur.execute(sql).fetchall()
     
+def edit(sql):
+    """
+    Keyword arguments: sql
+    sql -- the sql query you want to execute.
+    Return: this function executes the sql you type in.
+    """
+    with sqlite3.connect(DB_NAME) as conn:
+        cur = conn.cursor()
+        return cur.execute(sql)
+    
 def tuples2json(tuples):
-    data = {f"q{t[0]}":{"q_id": f"{t[0]}", "q_lvl": f"{t[1]}", "question": f"{t[2]}", "ans": f"{t[3]}", "opt_a": f"{t[4]}", "opt_b": f"{t[5]}", "opt_c": f"{t[6]}"} for t in tuples}
+    data = [{f"q_id": f"{t[0]}", "q_lvl": f"{t[1]}", "question": f"{t[2]}", "ans": f"{t[3]}", "opt_a": f"{t[4]}", "opt_b": f"{t[5]}", "opt_c": f"{t[6]}"} for t in tuples]
     return data
+
+def save2db():
+    with sqlite3.connect(DB_NAME) as conn:
+        conn.commit()
+
+
