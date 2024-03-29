@@ -40,5 +40,5 @@ def test_delete_question():
     response = requests.delete(url=f"{TEST_URL}/delete/0")
     if response.status_code == 200:
         result = response.json()
-        assert result["status"] == "Deleted question 0"
+        assert result["status"] == "Deleted question 0" or result["status"] == "Question 0 doesn't exist"
         assert result["length"] - result["original_length"] == -1

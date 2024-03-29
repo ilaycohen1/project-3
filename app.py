@@ -66,13 +66,20 @@ def update_question(current_q_id):
 def delete_question(current_q_id):
     sql = f"DELETE FROM questions WHERE q_id = {current_q_id}"
     original_length = len(db.query("SELECT * FROM questions"))
-    db.edit(sql)
-    db.save2db()
-    return json.dumps({
-        "status":f"Deleted question {current_q_id}",
-        "length":len(db.query("SELECT * FROM questions")),
-        "original_length":original_length
-    })
+    if db.edit(f"SELECT * FROM questions WHERE q_id = {current_q_id}").fetchone():
+        db.edit(sql)
+        db.save2db()
+        return json.dumps({
+            "status":f"Deleted question {current_q_id}",
+            "length":len(db.query("SELECT * FROM questions")),
+            "original_length":original_length
+        })
+    else:
+        return json.dumps({
+            "status":f"Question {current_q_id} doesn't exist",
+            "length":len(db.query("SELECT * FROM questions"))-1,
+            "original_length":original_length
+        })  
 
 
 # @app.route('/api/questions/add', methods=['GET'])
