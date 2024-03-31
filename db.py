@@ -41,4 +41,7 @@ def save2db():
     with sqlite3.connect(DB_NAME) as conn:
         conn.commit()
 
+def dontSave2db():
+    with sqlite3.connect(DB_NAME) as conn:
+        conn.rollback()
 

@@ -1,0 +1,45 @@
+.navbar {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.question-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    padding: 15px;
+    margin-top: 200px;
+    font-size: larger;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    width: 400px;
+}
+
+.question, h2 {
+    color: rgba(154, 144, 215, 0.571);
+}
+
+.answer-options {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    font-size: large;
+
+}
+
+.answer-options > div {
+    padding: 4px;
+    font-size: large;
+    border-color: black;
+    border-style: solid;
+    opacity: 1;
+    background-color: aliceblue
+}
+
+body {
+    background-image: url("background3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
