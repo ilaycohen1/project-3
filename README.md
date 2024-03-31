@@ -12,9 +12,9 @@ Welcome to the Trivia Game! This is a simple web application where users can pla
 
 ## Getting Started
 
-Docker: 
+### Docker: 
 docker run -p 5000:5000 ilaycdocker/trivia:1.0
-
+### 
 Locally:
 git clone https://github.com/ilaycohen1/trivia.git
 python -m pip install -r requirements.txt
