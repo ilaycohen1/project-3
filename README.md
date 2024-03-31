@@ -13,8 +13,8 @@ Welcome to the Trivia Game! This is a simple web application where users can pla
 ## Getting Started
 
 ### Docker: 
-docker run -p 5000:5000 ilaycdocker/trivia:1.0
-Go to http://localhost:5000/trivia
+###### docker run -p 5000:5000 ilaycdocker/trivia:1.0
+###### Go to http://localhost:5000/trivia
 
 ### Locally:
 #### git clone https://github.com/ilaycohen1/trivia.git
