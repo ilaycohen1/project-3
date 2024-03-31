@@ -26,11 +26,18 @@
 
         function checkAns(e, currentQ) {
             if (e.target.textContent==currentQ.ans){
+                Array.from(document.getElementsByClassName("optionalAns")).forEach(element => {
+                   element.style.backgroundColor = "aliceblue"; 
+                });
                 e.target.style.backgroundColor="green";
                 setMessage(lvl==9?"Congrats, you have completed all of the levels! Yow win!":null);
                 setLvl(lvl+1);
             }
-            else {e.target.style.backgroundColor="red";
+            else {
+                Array.from(document.getElementsByClassName("optionalAns")).forEach(element => {
+                    element.style.backgroundColor = "aliceblue"; 
+                 });
+                e.target.style.backgroundColor="red";
             setQIndex(qIndex+1 == questions.length ? 0 : qIndex + 1);
             }
         }
