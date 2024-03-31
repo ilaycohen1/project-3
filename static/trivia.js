@@ -78,7 +78,7 @@
         
         return (
             <div>
-                <div id="add-form" style={{display: "none"}}>
+                <div id="add-form" style={{display: "none"}} className="add-form">
                     <input onChange={(e)=>{setQ_lvl(e.target.value);}} className="lvl-input" placeholder="Level"></input>
                     <input onChange={(e)=>{setQ_q(e.target.value);}} className="question-input" placeholder="Enter your question"></input>
                     <input onChange={(e)=>{setQ_optA(e.target.value);}} className="optA-input" placeholder="Enter option 1"></input>
@@ -122,7 +122,7 @@
 
         return (
             <div>
-                <div id="delete-form" style={{display: "none"}}>
+                <div id="delete-form" style={{display: "none"}} className="delete-form">
                     <select value={selected_q} onChange={(e) => setSelected_q(e.target.value)}>
                         <option value="">Select a question to delete</option>
                         {questions.map(item => (
@@ -183,7 +183,7 @@
 
         return (
             <div>
-                <div id="update-form" style={{display: "none"}}>
+                <div id="update-form" style={{display: "none"}} className="update-form">
                     <select value={selected_q.id} onChange={(e) => setSelected_q(
                         questions.find(item=>item.id==parseInt(e.target.value))
                     )}>

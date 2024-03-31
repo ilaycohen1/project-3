@@ -43,3 +43,10 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.update-form, .add-form, .delete-form {
+    flex-direction: column;
+    color: aliceblue;
+    background-color: rgba(44, 13, 113, 0.773);
+    padding: 20px;
+}
