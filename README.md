@@ -17,6 +17,6 @@ Welcome to the Trivia Game! This is a simple web application where users can pla
 ###### Go to http://localhost:5000/trivia
 
 ### Locally:
-#### git clone https://github.com/ilaycohen1/trivia.git
-#### python -m pip install -r requirements.txt
-#### python app.py
+##### git clone https://github.com/ilaycohen1/trivia.git
+##### python -m pip install -r requirements.txt
+##### python app.py
