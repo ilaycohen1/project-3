@@ -2,7 +2,6 @@ from flask import Flask, request, render_template
 import json
 import db
 from flask_cors import CORS
-import traceback
 
 app = Flask(__name__)
 
@@ -10,6 +9,9 @@ CORS(app)
 
 db.create_table(table_name="users", columns="('id' INTEGER PRIMARY KEY, 'email' TEXT, 'password' TEXT, 'registration_date' DATE, 'best_score' INTEGER)")
 db.create_table(table_name="questions", columns="('q_id' INTEGER PRIMARY KEY AUTOINCREMENT, 'q_lvl' INTEGER, 'question' TEXT, 'ans' TEXT, 'opt_a' TEXT, 'opt_b' TEXT, 'opt_c' TEXT)" )
+
+
+# Endpoint to retrieve all questions from the database
 
 @app.route('/api/questions', methods=['GET'])
 def show_questions():
@@ -20,6 +22,7 @@ def show_questions():
             "length":len(data)
     })
 
+# Endpoint to retrieve questions based on a specified level
 
 @app.route('/api/questions/<current_q_lvl>', methods=['GET'])
 def show_question_by_lvl(current_q_lvl):
@@ -30,6 +33,7 @@ def show_question_by_lvl(current_q_lvl):
         "length" : len(data)
     })
 
+# Endpoint to add a question for the trivia game
 
 @app.route('/api/questions/add', methods=['POST'])
 def add_question():
@@ -55,6 +59,9 @@ def add_question():
             "length":-1
         })
 
+
+# Endpoint to update a question in the trivia game.
+
 @app.route('/api/questions/update/<current_q_id>', methods=['PUT'])
 def update_question(current_q_id):
     try:
@@ -72,7 +79,10 @@ def update_question(current_q_id):
             "status":f"Error",
             "length":len(q)
         })
+    
 
+
+# Endpoint to delete a question.
 
 @app.route('/api/questions/delete/<current_q_id>', methods=['DELETE'])
 def delete_question(current_q_id):
@@ -93,6 +103,8 @@ def delete_question(current_q_id):
             "original_length":original_length
         })  
 
+
+# Front end application. 
 
 @app.route('/trivia')
 def play():

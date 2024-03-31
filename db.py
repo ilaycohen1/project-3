@@ -34,14 +34,25 @@ def edit(sql):
         return cur.execute(sql)
     
 def tuples2json(tuples):
+    """
+    Keyword arguments: tuples
+    tuples -- a list of tuples retrieved from the database.
+    Return: a list of dictionaries representing the data in JSON-like format.
+    """
     data = [{f"q_id": f"{t[0]}", "q_lvl": f"{t[1]}", "question": f"{t[2]}", "ans": f"{t[3]}", "opt_a": f"{t[4]}", "opt_b": f"{t[5]}", "opt_c": f"{t[6]}"} for t in tuples]
     return data
 
 def save2db():
+    """
+    Commit changes made to the database.
+    """
     with sqlite3.connect(DB_NAME) as conn:
         conn.commit()
 
 def dontSave2db():
+    """
+    Roll back changes made to the database, effectively undoing them.
+    """
     with sqlite3.connect(DB_NAME) as conn:
         conn.rollback()
 

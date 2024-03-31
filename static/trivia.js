@@ -31,20 +31,24 @@
                 });
                 e.target.style.backgroundColor="green";
                 setMessage(lvl==9?"Congrats, you have completed all of the levels! Yow win!":null);
-                setLvl(lvl+1);
+                setQIndex(qIndex+1 < questions.length ? qIndex+1 : 0);
+                setLvl(qIndex+1 == questions.length ? lvl+1 : lvl)
             }
             else {
                 Array.from(document.getElementsByClassName("optionalAns")).forEach(element => {
                     element.style.backgroundColor = "aliceblue"; 
                  });
                 e.target.style.backgroundColor="red";
-            setQIndex(qIndex+1 == questions.length ? 0 : qIndex + 1);
+            setQIndex(0);
+            setMessage("You lost, back to 1st question!!!")
             }
         }
+
 
         return (
             <div className="question-container">
                 <h2>{message}</h2>
+                <h2>Level: {lvl}</h2>
                 <h1 className="question">{JSON.stringify(currentQ ? currentQ.question : "Loading...")}</h1>
                 <div className="answer-options">
                     <div onClick={(e) => checkAns(e, currentQ)} className="optionalAns">{currentQ ? currentQ.opt_a : "Loading..."}</div>
